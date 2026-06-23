@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaseya VSA Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>">
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────── -->
+  <header class="header">
+    <h1>
+      <span class="logo">🖥️</span>
+      Kaseya VSA Dashboard
+    </h1>
+    <div class="meta">
+      <span class="status-dot green" id="conn-status" title="Connected"></span>
+      <span id="conn-text">Connecting...</span>
+      <span style="margin-left: 8px; color: var(--text-dim);">|</span>
+      <span style="margin-left: 8px;">Auto-refresh: 5 min</span>
+    </div>
+  </header>
+
+  <!-- ── Refresh Bar ────────────────────────────────── -->
+  <div class="refresh-bar">
+    <span id="last-refresh">Loading...</span>
+    <button class="btn-refresh" id="btn-refresh">🔄 Refresh Now</button>
+  </div>
+
+  <!-- ── Error Box ──────────────────────────────────── -->
+  <div class="container" style="padding-bottom: 0;">
+    <div class="error-box" id="error-box" style="display:none;"></div>
+  </div>
+
+  <!-- ── Loading ────────────────────────────────────── -->
+  <div class="container" id="loading" style="display:none;">
+    <div class="loading">
+      <div class="spinner"></div>
+      <div>Fetching data from Kaseya VSA...</div>
+    </div>
+  </div>
+
+  <!-- ── Main Content ───────────────────────────────── -->
+  <div class="container">
+
+    <!-- Summary Cards -->
+    <div class="cards" id="cards">
+      <div class="card"><div class="loading"><div class="spinner"></div></div></div>
+      <div class="card"><div class="loading"><div class="spinner"></div></div></div>
+      <div class="card"><div class="loading"><div class="spinner"></div></div></div>
+      <div class="card"><div class="loading"><div class="spinner"></div></div></div>
+      <div class="card"><div class="loading"><div class="spinner"></div></div></div>
+    </div>
+
+    <!-- ── Agents Section ──────────────────────────── -->
+    <div class="section">
+      <div class="section-header">
+        <h2>🤖 Agent Status</h2>
+        <span class="badge" id="agent-count">Loading...</span>
+      </div>
+      <div class="tabs">
+        <div class="tab active" data-tab="all">All</div>
+        <div class="tab" data-tab="online">🟢 Online</div>
+        <div class="tab" data-tab="offline">🔴 Offline</div>
+        <div class="tab" data-tab="problem">⚠️ Problems</div>
+      </div>
+      <div id="agents-table-wrap">
+        <div class="empty-state">Loading agents...</div>
+      </div>
+    </div>
+
+    <!-- ── Alerts Section ──────────────────────────── -->
+    <div class="section">
+      <div class="section-header">
+        <h2>🚨 Active Alerts</h2>
+        <span class="badge" id="alert-count">Loading...</span>
+      </div>
+      <div id="alerts-table-wrap">
+        <div class="empty-state">Loading alerts...</div>
+      </div>
+    </div>
+
+    <!-- ── Monitor Section ─────────────────────────── -->
+    <div class="section">
+      <div class="section-header">
+        <h2>📊 Monitor Counters (CPU / Disk / Memory)</h2>
+        <span class="badge" id="monitor-count">Loading...</span>
+      </div>
+      <div id="monitor-table-wrap">
+        <div class="empty-state">Loading monitor data...</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Footer ─────────────────────────────────────── -->
+  <div style="text-align: center; padding: 20px; color: var(--text-dim); font-size: 0.75rem;">
+    Kaseya VSA Dashboard · Auto-refreshes every 5 minutes · Backend: localhost:8080
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
