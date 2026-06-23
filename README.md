@@ -36,7 +36,7 @@ Monitoring dashboard for Kaseya VSA 9.5 — FastAPI backend + HTML/JS frontend.
 
 4. **Get session token from browser**
    - Login to Kaseya VSA web UI
-   - Open F12 → Console → type `document.cookie`
+   - Open F12 → Console → type `document.cookie` or `fetch('/api/v1.0/auth', {credentials: 'include'}).then(r => r.json()).then(console.log)`
    - Copy the `sessionToken=` value
    - Paste it in `.env` as `KASEYA_SESSION_TOKEN`
 
